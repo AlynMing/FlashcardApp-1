@@ -26,6 +26,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        
+        findViewById(R.id.option1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.option1).setBackgroundColor(getResources().getColor(R.color.wrongAnswer));
+            }
+        });
+
+        findViewById(R.id.option2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.option2).setBackgroundColor(getResources().getColor(R.color.wrongAnswer));
+            }
+        });
+
+        findViewById(R.id.option3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.option3).setBackgroundColor(getResources().getColor(R.color.rightAnswer));
+            }
+        });
+
+
     }
 }
