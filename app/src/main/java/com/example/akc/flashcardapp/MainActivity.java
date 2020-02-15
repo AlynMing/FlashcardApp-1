@@ -25,5 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
             }
         });
+
+        
     }
 }

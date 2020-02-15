@@ -28,4 +28,40 @@
         android:background="@color/answerColor"
         android:visibility="invisible"
         android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/option1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="247dp"
+        android:gravity="center"
+        android:background="@color/answerColor"
+        android:textSize="30dp"
+        android:text="Bill Clinton" />
+
+    <TextView
+        android:id="@+id/option2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="165dp"
+        android:gravity="center"
+        android:background="@color/answerColor"
+        android:textSize="30dp"
+        android:text="George H.W. Bush" />
+
+    <TextView
+        android:id="@+id/option3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="82dp"
+        android:gravity="center"
+        android:background="@color/answerColor"
+        android:textSize="30dp"
+        android:text="Barack Obama" />
 </RelativeLayout>

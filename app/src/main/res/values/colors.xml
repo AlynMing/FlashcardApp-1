@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="questionColor">#99CCFF</color>
     <color name="answerColor">#ff9933</color>
+    <color name="rightAnswer">#006633</color>
+    <color name="wrongAnswer">#990000</color>
 </resources>
