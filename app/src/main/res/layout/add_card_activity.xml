@@ -13,4 +13,26 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/cacel" />
 
+    <EditText
+        android:id="@+id/NewQuestion"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter the Question Here"/>
+
+    <EditText
+        android:id="@+id/NewAnswer"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="193dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter the Answer Here"/>
+
 </RelativeLayout>
