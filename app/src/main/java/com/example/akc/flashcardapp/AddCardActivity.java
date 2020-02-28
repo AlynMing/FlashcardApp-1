@@ -1,20 +1,16 @@
 package com.example.akc.flashcardapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
-=======
 import android.view.View;
->>>>>>> origin/master
+import android.widget.EditText;
 
 public class AddCardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-        setContentView(R.layout.activity_add_card);
-=======
         setContentView(R.layout.add_card_activity);
 
         findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
@@ -23,6 +19,16 @@ public class AddCardActivity extends AppCompatActivity {
                 finish();
             }
         });
->>>>>>> origin/master
+
+        findViewById(R.id.saveButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent data = new Intent();
+                data.putExtra("newQuestion", ((EditText) findViewById(R.id.NewQuestion)).getText().toString());
+                data.putExtra("newAnswer", ((EditText) findViewById(R.id.NewAnswer)).getText().toString());
+                setResult(RESULT_OK, data);
+                finish();
+            }
+        });
     }
 }

@@ -33,9 +33,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundLayerName" value="cancelbutton" />
-                                      <entry key="foregroundImage" value="C:\Users\kcani\Pictures\Projects Images\Flashcard App\x.svg" />
-                                      <entry key="foregroundLayerName" value="cacel" />
+                                      <entry key="backgroundLayerName" value="savebutton" />
+                                      <entry key="foregroundImage" value="C:\Users\kcani\Pictures\Projects Images\Flashcard App\save.svg" />
+                                      <entry key="foregroundLayerName" value="save" />
                                       <entry key="outputName" value="see" />
                                     </map>
                                   </option>
