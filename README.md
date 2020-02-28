@@ -1,3 +1,5 @@
+## Flashcard App
+
 ## Lab 2
 
 ### App Description
@@ -20,7 +22,6 @@ A simple flashcard application to learn the basics of Android development. Addit
 - [ ] User can also enter multiple choice answers when creating a card
 - [ ] App is further styled and customized!
 
-## Flashcard App
 
 ## Lab 1
 
