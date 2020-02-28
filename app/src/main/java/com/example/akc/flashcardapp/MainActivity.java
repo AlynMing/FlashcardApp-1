@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,9 +75,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
-                MainActivity.this.startActivity(intent);
+                MainActivity.this.startActivityForResult(intent, 100);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100) {
+            if(data != null){
+                String question = data.getExtras().getString("newQuestion");
+                String answer = data.getExtras().getString("newAnswer");
+                ((TextView)findViewById(R.id.flashcard_question)).setText(question);
+                ((TextView)findViewById(R.id.flashcard_answer)).setText(answer);
+                ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+                findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+                findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+                findViewById(R.id.option3).setVisibility(View.INVISIBLE);
+                isShowingAnswers = true;
+            }
+        }
     }
 }
