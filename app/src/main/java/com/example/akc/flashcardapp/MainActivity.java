@@ -7,14 +7,27 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     boolean isShowingAnswers = false;
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> allFlashcards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        allFlashcards = flashcardDatabase.getAllCards();
+
+        if (allFlashcards != null && allFlashcards.size() > 0) {
+            ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(0).getAnswer());
+        }
+
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
             if(data != null){
                 String question = data.getExtras().getString("newQuestion");
                 String answer = data.getExtras().getString("newAnswer");
+                flashcardDatabase.insertCard(new Flashcard(question, answer));
+                allFlashcards = flashcardDatabase.getAllCards();
                 ((TextView)findViewById(R.id.flashcard_question)).setText(question);
                 ((TextView)findViewById(R.id.flashcard_answer)).setText(answer);
                 ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
