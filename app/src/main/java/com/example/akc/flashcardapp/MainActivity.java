@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -90,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.option3).setBackgroundColor(getResources().getColor(R.color.rightAnswer));
+            }
+        });
+
+        findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
+                intent.putExtra("currQuestion", ((TextView) findViewById(R.id.flashcard_question)).getText().toString());
+                intent.putExtra("currAnswer", ((TextView) findViewById(R.id.flashcard_answer)).getText().toString());
+                MainActivity.this.startActivityForResult(intent, 100);
             }
         });
 

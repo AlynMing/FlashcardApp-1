@@ -97,4 +97,13 @@
         android:layout_marginBottom="35dp"
         android:background="@drawable/next" />
 
+    <ImageView
+        android:id="@+id/edit"
+        android:layout_width="75dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp"
+        android:src="@drawable/edit" />
+
 </RelativeLayout>
