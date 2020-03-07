@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isShowingAnswers = false;
     FlashcardDatabase flashcardDatabase;
     List<Flashcard> allFlashcards;
+    int currentCardDisplayedIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,37 @@ public class MainActivity extends AppCompatActivity {
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
         allFlashcards = flashcardDatabase.getAllCards();
 
+        findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+        ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+        findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+        findViewById(R.id.option3).setVisibility(View.INVISIBLE);
+        isShowingAnswers = true;
+
         if (allFlashcards != null && allFlashcards.size() > 0) {
             ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(0).getQuestion());
             ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(0).getAnswer());
         }
+
+        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentCardDisplayedIndex++;
+                if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                    currentCardDisplayedIndex = 0;
+                }
+                ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+                findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+                findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+                findViewById(R.id.option3).setVisibility(View.INVISIBLE);
+                isShowingAnswers = true;
+            }
+        });
 
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override

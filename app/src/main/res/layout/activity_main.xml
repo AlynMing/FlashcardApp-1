@@ -12,8 +12,8 @@
         android:layout_height="179dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/card_background"
         android:elevation="5dp"
         android:gravity="center"
@@ -26,8 +26,8 @@
         android:layout_height="179dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/answer_design"
         android:elevation="5dp"
         android:gravity="center"
@@ -86,4 +86,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/add" />
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_above="@+id/option1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/next" />
+
 </RelativeLayout>
