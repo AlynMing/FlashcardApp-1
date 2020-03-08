@@ -18,7 +18,7 @@
         android:background="@drawable/card_background"
         android:elevation="5dp"
         android:gravity="center"
-        android:text="Who is the 44th President of the United States?"
+        android:text="Add a question!"
         android:textSize="25sp" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:background="@drawable/answer_design"
         android:elevation="5dp"
         android:gravity="center"
-        android:text="Barack Obama"
+        android:text="Add a question and it's answer!"
         android:textSize="25sp" />
 
     <TextView
@@ -44,7 +44,7 @@
         android:layout_marginBottom="247dp"
         android:background="@color/answerColor"
         android:gravity="center"
-        android:text="Bill Clinton"
+        android:text="Wrong Answer 1"
         android:textSize="25sp" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:gravity="center"
         android:background="@color/answerColor"
         android:textSize="25sp"
-        android:text="George H.W. Bush" />
+        android:text="Wrong Answer 2" />
 
     <TextView
         android:id="@+id/rightAnswer"
@@ -69,7 +69,7 @@
         android:gravity="center"
         android:background="@color/answerColor"
         android:textSize="25sp"
-        android:text="Barack Obama" />
+        android:text="Right Answer" />
 
     <ImageView
         android:id="@+id/toggle_choices_visibility"
@@ -94,8 +94,8 @@
         android:layout_height="46dp"
         android:layout_above="@+id/option1"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="71dp"
         android:background="@drawable/next" />
 
     <ImageView
@@ -106,5 +106,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="6dp"
         android:src="@drawable/edit" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="51dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="182dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="375dp"
+        android:layout_toStartOf="@+id/next"
+        android:src="@drawable/delete" />
 
 </RelativeLayout>

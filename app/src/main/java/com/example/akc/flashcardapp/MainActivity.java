@@ -42,18 +42,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 currentCardDisplayedIndex++;
-                if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
-                    currentCardDisplayedIndex = 0;
+                if (allFlashcards.isEmpty()){
+                    return;
+                } else {
+                    if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                        currentCardDisplayedIndex = 0;
+                    }
+                    ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                    findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+                    findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
+                    isShowingAnswers = true;
                 }
-                ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
-                ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
-                findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
-                findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
-                ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
-                findViewById(R.id.option1).setVisibility(View.INVISIBLE);
-                findViewById(R.id.option2).setVisibility(View.INVISIBLE);
-                findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
-                isShowingAnswers = true;
             }
         });
 
@@ -101,6 +105,32 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("currQuestion", ((TextView) findViewById(R.id.flashcard_question)).getText().toString());
                 intent.putExtra("currAnswer", ((TextView) findViewById(R.id.flashcard_answer)).getText().toString());
                 MainActivity.this.startActivityForResult(intent, 100);
+            }
+        });
+
+        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flashcardDatabase.deleteCard(((TextView) findViewById(R.id.flashcard_question)).getText().toString());
+                allFlashcards = flashcardDatabase.getAllCards();
+                currentCardDisplayedIndex++;
+                if (allFlashcards.isEmpty()){
+                    ((TextView) findViewById(R.id.flashcard_question)).setText("Add a question!");
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText("Add a question and it's answer!");
+                } else {
+                    if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                        currentCardDisplayedIndex = 0;
+                    }
+                    ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                    findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+                    findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
+                    isShowingAnswers = true;
+                }
             }
         });
 
@@ -152,11 +182,6 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.option1)).setText(option1);
                 ((TextView)findViewById(R.id.option2)).setText(option2);
                 ((TextView)findViewById(R.id.rightAnswer)).setText(answer);
-//                ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
-//                findViewById(R.id.option1).setVisibility(View.INVISIBLE);
-//                findViewById(R.id.option2).setVisibility(View.INVISIBLE);
-//                findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
-//                isShowingAnswers = true;
             }
         }
     }
