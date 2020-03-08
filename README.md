@@ -48,7 +48,7 @@ A simple flashcard application to learn the basics of Android development. Addit
 A simple flashcard application to learn the basics of Android development.
 
 ### App Walk-though
-![Demo of the Application](demo.gif)
+![Demo of the Application](lab1demo.gif)
 
 ## Required
 - [x] Create New Project in Android Studio
