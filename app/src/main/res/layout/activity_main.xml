@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/myBackgroundColor">
 
     <TextView
         android:id="@+id/flashcard_question"
         android:layout_width="373dp"
-        android:layout_height="179dp"
+        android:layout_height="185dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="18dp"
@@ -18,12 +19,12 @@
         android:elevation="5dp"
         android:gravity="center"
         android:text="Who is the 44th President of the United States?"
-        android:textSize="40sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/flashcard_answer"
         android:layout_width="373dp"
-        android:layout_height="179dp"
+        android:layout_height="185dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="18dp"
@@ -32,7 +33,7 @@
         android:elevation="5dp"
         android:gravity="center"
         android:text="Barack Obama"
-        android:textSize="40sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/option1"
@@ -44,7 +45,7 @@
         android:background="@color/answerColor"
         android:gravity="center"
         android:text="Bill Clinton"
-        android:textSize="30dp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/option2"
@@ -55,11 +56,11 @@
         android:layout_marginBottom="165dp"
         android:gravity="center"
         android:background="@color/answerColor"
-        android:textSize="30dp"
+        android:textSize="25sp"
         android:text="George H.W. Bush" />
 
     <TextView
-        android:id="@+id/option3"
+        android:id="@+id/rightAnswer"
         android:layout_width="309dp"
         android:layout_height="53dp"
         android:layout_alignParentBottom="true"
@@ -67,7 +68,7 @@
         android:layout_marginBottom="82dp"
         android:gravity="center"
         android:background="@color/answerColor"
-        android:textSize="30dp"
+        android:textSize="25sp"
         android:text="Barack Obama" />
 
     <ImageView
@@ -89,12 +90,12 @@
 
     <ImageView
         android:id="@+id/next"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
+        android:layout_width="48dp"
+        android:layout_height="46dp"
         android:layout_above="@+id/option1"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="17dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/next" />
 
     <ImageView

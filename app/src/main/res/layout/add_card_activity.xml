@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/myBackgroundColor">
 
     <ImageView
         android:id="@+id/cancelButton"
@@ -34,6 +35,28 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Enter the Answer Here"/>
+
+    <EditText
+        android:id="@+id/wrongAnswer"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="325dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter wrong answer option here"/>
+
+    <EditText
+        android:id="@+id/otherWrongAsnwer"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="457dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter wrong answer option here"/>
 
     <ImageView
         android:id="@+id/saveButton"

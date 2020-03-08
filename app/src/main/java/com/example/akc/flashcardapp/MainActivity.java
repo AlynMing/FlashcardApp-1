@@ -2,9 +2,9 @@ package com.example.akc.flashcardapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
         findViewById(R.id.option1).setVisibility(View.INVISIBLE);
         findViewById(R.id.option2).setVisibility(View.INVISIBLE);
-        findViewById(R.id.option3).setVisibility(View.INVISIBLE);
+        findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
         isShowingAnswers = true;
 
         if (allFlashcards != null && allFlashcards.size() > 0) {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
                 findViewById(R.id.option1).setVisibility(View.INVISIBLE);
                 findViewById(R.id.option2).setVisibility(View.INVISIBLE);
-                findViewById(R.id.option3).setVisibility(View.INVISIBLE);
+                findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
                 isShowingAnswers = true;
             }
         });
@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.option3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.rightAnswer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findViewById(R.id.option3).setBackgroundColor(getResources().getColor(R.color.rightAnswer));
+                findViewById(R.id.rightAnswer).setBackgroundColor(getResources().getColor(R.color.rightAnswer));
             }
         });
 
@@ -111,13 +111,13 @@ public class MainActivity extends AppCompatActivity {
                     ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
                     findViewById(R.id.option1).setVisibility(View.INVISIBLE);
                     findViewById(R.id.option2).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.option3).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
                     isShowingAnswers = true;
                 } else {
                     ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.nosee);
                     findViewById(R.id.option1).setVisibility(View.VISIBLE);
                     findViewById(R.id.option2).setVisibility(View.VISIBLE);
-                    findViewById(R.id.option3).setVisibility(View.VISIBLE);
+                    findViewById(R.id.rightAnswer).setVisibility(View.VISIBLE);
                     isShowingAnswers = false;
                 }
             }
@@ -137,17 +137,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 100) {
             if(data != null){
+                Snackbar.make(findViewById(R.id.flashcard_question),
+                        "Card successfully created",
+                        Snackbar.LENGTH_SHORT)
+                        .show();
                 String question = data.getExtras().getString("newQuestion");
                 String answer = data.getExtras().getString("newAnswer");
+                String option1 = data.getExtras().getString("newOption1");
+                String option2 = data.getExtras().getString("newOption2");
                 flashcardDatabase.insertCard(new Flashcard(question, answer));
                 allFlashcards = flashcardDatabase.getAllCards();
                 ((TextView)findViewById(R.id.flashcard_question)).setText(question);
                 ((TextView)findViewById(R.id.flashcard_answer)).setText(answer);
-                ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
-                findViewById(R.id.option1).setVisibility(View.INVISIBLE);
-                findViewById(R.id.option2).setVisibility(View.INVISIBLE);
-                findViewById(R.id.option3).setVisibility(View.INVISIBLE);
-                isShowingAnswers = true;
+                ((TextView)findViewById(R.id.option1)).setText(option1);
+                ((TextView)findViewById(R.id.option2)).setText(option2);
+                ((TextView)findViewById(R.id.rightAnswer)).setText(answer);
+//                ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+//                findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+//                findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+//                findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
+//                isShowingAnswers = true;
             }
         }
     }
