@@ -6,7 +6,7 @@
 A simple flashcard application to learn the basics of Android development. Additional features added to the app.
 
 ### App Walk-though
-![Demo of the Application](lab3demo.gif)
+![Demo of the Application](lab1demo.gif)
 
 ## Required
 - [x] User can create a card and still see their created card when the app is relaunched.
