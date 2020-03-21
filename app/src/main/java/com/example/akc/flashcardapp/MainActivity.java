@@ -1,10 +1,16 @@
 package com.example.akc.flashcardapp;
 
+import android.animation.Animator;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +25,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // -------------------- Just a function to make options invisible
-    public void makeOptionsInvisible(){
+    // -------------------- Just a function to make answer invisible
+    public void showQuestion(){
         findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+        ((ImageView) findViewById(R.id.toggle_choices_visibility)).setImageResource(R.drawable.see);
+        findViewById(R.id.option1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.option2).setVisibility(View.INVISIBLE);
+        findViewById(R.id.rightAnswer).setVisibility(View.INVISIBLE);
+        isShowingAnswers = true;
     }
 
     // -------------------- Reset the answers color to default
@@ -50,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Database to store our flashcards
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
         allFlashcards = flashcardDatabase.getAllCards();
-        makeOptionsInvisible();
+        showQuestion();
         resetOptionColors();
 
         // Populate
@@ -69,13 +80,28 @@ public class MainActivity extends AppCompatActivity {
                 if (allFlashcards.isEmpty()){
                     return;
                 } else {
-                    Flashcard temp = allFlashcards.get(getRandomNumber(0,allFlashcards.size() - 1));
-                    ((TextView) findViewById(R.id.flashcard_question)).setText(temp.getQuestion());
-                    ((TextView) findViewById(R.id.flashcard_answer)).setText(temp.getAnswer());
-                    ((TextView) findViewById(R.id.rightAnswer)).setText(temp.getAnswer());
-                    ((TextView) findViewById(R.id.option1)).setText(temp.getWrongAnswer1());
-                    ((TextView) findViewById(R.id.option2)).setText(temp.getWrongAnswer2());
-                    makeOptionsInvisible();
+                    final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
+                    final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
+                    leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                            findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
+                        }
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            findViewById(R.id.flashcard_question).startAnimation(rightInAnim);
+                            Flashcard temp = allFlashcards.get(getRandomNumber(0,allFlashcards.size() - 1));
+                            ((TextView) findViewById(R.id.flashcard_question)).setText(temp.getQuestion());
+                            ((TextView) findViewById(R.id.flashcard_answer)).setText(temp.getAnswer());
+                            ((TextView) findViewById(R.id.rightAnswer)).setText(temp.getAnswer());
+                            ((TextView) findViewById(R.id.option1)).setText(temp.getWrongAnswer1());
+                            ((TextView) findViewById(R.id.option2)).setText(temp.getWrongAnswer2());
+                        }
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
+                    });
+                    findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
+                    showQuestion();
                     resetOptionColors();
                 }
             }
@@ -83,10 +109,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Click question -> Turn the card to show answer
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
                 findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
+                View answerSideView = findViewById(R.id.flashcard_answer);
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+                float finalRadius = (float) Math.hypot(cx, cy);
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+                anim.setDuration(1000);
+                anim.start();
             }
         });
 
@@ -134,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("newOption1", ((TextView) findViewById(R.id.option1)).getText().toString());
                 intent.putExtra("newOption2", ((TextView) findViewById(R.id.option2)).getText().toString());
                 MainActivity.this.startActivityForResult(intent, EDIT_CARD_REQUEST_CODE);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -156,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     ((TextView) findViewById(R.id.rightAnswer)).setText(temp.getAnswer());
                     ((TextView) findViewById(R.id.option1)).setText(temp.getWrongAnswer1());
                     ((TextView) findViewById(R.id.option2)).setText(temp.getWrongAnswer2());
-                    makeOptionsInvisible();
+                    showQuestion();
                     resetOptionColors();
                 }
             }
@@ -188,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
                 MainActivity.this.startActivityForResult(intent, ADD_CARD_REQUEST_CODE);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 

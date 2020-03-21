@@ -51,7 +51,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="56" />
+                                                <entry key="scalingPercent" value="139" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -61,9 +61,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\kcani\Pictures\Projects Images\Flashcard App\next.svg" />
-                                      <entry key="foregroundLayerName" value="next_button" />
-                                      <entry key="outputName" value="next" />
+                                      <entry key="foregroundImage" value="C:\Users\kcani\Pictures\Projects Images\Flashcard App\icon.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
