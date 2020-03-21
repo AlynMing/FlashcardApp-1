@@ -1,9 +1,27 @@
-## Flashcard App
+# Flashcard App
+
+## App Description
+A simple flashcard application to learn the basics of Android development
+
+
+## Lab 4
+
+### App Walk-though
+![Demo of the Application](lab4demo.gif)
+
+## Required
+- [x] User sees a transition animation when going from the main screen to the add card screen.
+- [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
+- [x] User sees flashcards animating in / out when the 'next' button is tapped
+
+## Optional
+- [ ] Extra styling is added!
+- [ ] User sees a countdown timer for each question
+- [ ] User sees a 'card flip' animation when the card is tapped
+- [ ] User sees a celebration animation with confetti when they answer a question correctly
+
 
 ## Lab 3
-
-### App Description
-A simple flashcard application to learn the basics of Android development. Additional features added to the app.
 
 ### App Walk-though
 ![Demo of the Application](lab3demo.gif)
@@ -20,9 +38,6 @@ A simple flashcard application to learn the basics of Android development. Addit
 
 
 ## Lab 2
-
-### App Description
-A simple flashcard application to learn the basics of Android development. Additional features added to the app.
 
 ### App Walk-though
 ![Demo of the Application](lab2demo.gif)
@@ -43,9 +58,6 @@ A simple flashcard application to learn the basics of Android development. Addit
 
 
 ## Lab 1
-
-### App Description
-A simple flashcard application to learn the basics of Android development.
 
 ### App Walk-though
 ![Demo of the Application](lab1demo.gif)
